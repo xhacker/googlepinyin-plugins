@@ -2,7 +2,7 @@
 
 ------------------------------------------------
 -- 谷歌拼音北京尾号限行查询扩展
--- 版本: 0.1 pre
+-- 版本: 0.1 pre2
 -- 项目主页: http://code.google.com/p/googlepinyin-plugins/
 --
 -- 简介: 今天能开车吗？（在北京）
@@ -42,8 +42,11 @@ function GetXianxing(num)
 					return "周末，大家随便开车吧！"
 				else
 					for i = 1, 5, 1 do
+						if i == 5 then
+							i = 0
+						end
 						if tail2wday[i] == today then
-							return "今天是" .. WEEKDAY_CHINESE[today] .. "，尾号为" .. i .. "的车不能上路。"
+							return "今天是" .. WEEKDAY_CHINESE[today] .. "，尾号为" .. i .. "和" .. i + 5 .. "的车不能上路。"
 						end
 					end
 				end
